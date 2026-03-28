@@ -198,6 +198,24 @@ export default function Page() {
         </div>
       </section>
 
+    <section className="border-t border-black/10 bg-[#f5f5f2]">
+      <div className="mx-auto max-w-[1600px] px-8 py-16 sm:px-12 lg:px-20 lg:py-20">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-[22px] uppercase tracking-[0.24em] text-[#0a4ea3]">
+            Clients
+          </p>
+
+          <div className="mt-14 flex flex-wrap items-center justify-center gap-14 sm:gap-20">
+            <img src="/logos/mulawarman.png" alt="Mulawarman University" className="h-28 w-auto object-contain transition duration-300 hover:scale-105" />
+            <img src="/logos/pnj.jpg" alt="Politeknik Negeri Jakarta" className="h-28 w-auto object-contain transition duration-300 hover:scale-105" />
+            <img src="/logos/komdigi.png" alt="Komdigi" className="h-24 w-auto object-contain transition duration-300 hover:scale-105" />
+            <img src="/logos/jsc.jpg" alt="Jakarta Smart City" className="h-24 w-auto object-contain transition duration-300 hover:scale-105" />
+            <img src="/logos/iain-kediri.jpg" alt="IAIN Kediri" className="h-24 w-auto object-contain transition duration-300 hover:scale-105" />
+          </div>
+        </div>
+      </div>
+    </section>
+
       <section className="border-t border-black/10 bg-[#f5f5f2]">
         <div className="mx-auto flex min-h-[340px] max-w-[1600px] flex-col justify-between gap-12 px-8 py-16 sm:px-12 md:min-h-[380px] md:flex-row md:items-end lg:px-20 lg:py-24">
           <div className="max-w-3xl">

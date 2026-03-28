@@ -22,35 +22,21 @@ const offerings = [
   },
 ];
 
-const stackGroups = [
-  {
-    title: "Platforms",
-    items: [
-      { name: "Frappe", logo: "/logos/frappe.png" },
-      { name: "ERPNext", logo: "/logos/erpnext.jpg" },
-    ],
-  },
-  {
-    title: "AI",
-    items: [
-      { name: "OpenAI", logo: "/logos/openai.png" },
-      { name: "Anthropic", logo: "/logos/anthropic.svg" },
-    ],
-  },
-  {
-    title: "Cloud",
-    items: [
-      { name: "Azure", logo: "/logos/azure.png" },
-      { name: "AWS", logo: "/logos/aws.png" },
-    ],
-  },
-  {
-    title: "Networking",
-    items: [
-      { name: "Ruijie", logo: "/logos/ruijie.png" },
-      { name: "TP-Link", logo: "/logos/tp-link.png" },
-    ],
-  },
+const technologies = [
+  { name: "Frappe", logo: "/logos/frappe.png" },
+  { name: "ERPNext", logo: "/logos/erpnext.jpg" },
+  { name: "OpenAI", logo: "/logos/openai.png" },
+  { name: "Anthropic", logo: "/logos/anthropic.svg" },
+  { name: "Azure", logo: "/logos/azure.png" },
+  { name: "AWS", logo: "/logos/aws.png" },
+  { name: "Ruijie", logo: "/logos/ruijie.png" },
+  { name: "TP-Link", logo: "/logos/tp-link.png" },
+
+  { name: "Huawei", logo: "/logos/huawei.png" },
+  { name: "Omada", logo: "/logos/omada.jpg" },
+  { name: "SonicWall", logo: "/logos/sonicwall.png" },
+  { name: "Rainer", logo: "/logos/rainer.jpg" },
+  { name: "Sangfor", logo: "/logos/sangfor.png" },
 ];
 
 export default function ProductsPage() {
@@ -155,37 +141,24 @@ export default function ProductsPage() {
             </h2>
           </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-4">
-            {stackGroups.map((group) => (
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {technologies.map((item) => (
               <div
-                key={group.title}
-                className="border border-black/10 bg-white px-6 py-8 sm:px-8 sm:py-9"
+                key={item.name}
+                className="flex min-h-[120px] items-center justify-center border border-black/10 bg-white px-4 py-6 sm:px-6"
               >
-                <p className="text-[11px] uppercase tracking-[0.22em] text-[#0a4ea3]">
-                  {group.title}
-                </p>
-
-                <div className="mt-6 grid grid-cols-1 gap-4">
-                  {group.items.map((item) => (
-                    <div
-                      key={item.name}
-                      className="flex min-h-[110px] items-center justify-center border border-black/10 bg-[#fafaf8] px-4 py-5"
-                    >
-                      <div className="flex flex-col items-center justify-center gap-3 text-center">
-                        <div className="relative h-10 w-[140px] sm:h-12 sm:w-[160px]">
-                          <Image
-                            src={item.logo}
-                            alt={item.name}
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
-                        <p className="text-[11px] uppercase tracking-[0.18em] text-black/45">
-                          {item.name}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                <div className="flex flex-col items-center justify-center gap-3 text-center">
+                  <div className="relative h-10 w-[140px] sm:h-12 sm:w-[160px]">
+                    <Image
+                      src={item.logo}
+                      alt={item.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-black/45">
+                    {item.name}
+                  </p>
                 </div>
               </div>
             ))}
