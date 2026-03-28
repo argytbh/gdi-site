@@ -1,8 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Cpu, Network, ShieldCheck } from "lucide-react";
+import { getLatestArticles } from "@/lib/articles";
 
 const highlights = [
   {
@@ -37,13 +36,23 @@ const beliefs = [
   },
 ];
 
-const stats = [
-  { value: "3", label: "Core capability areas" },
-  { value: "4", label: "Main website sections" },
-  { value: "100%", label: "Deployment-oriented focus" },
+const placeholderInsights = [
+  {
+    title: "ERP, AI, and operational systems",
+    text: "Perspectives from ongoing work and implementation experience are being prepared.",
+  },
+  {
+    title: "Research and applied technology",
+    text: "Articles on digital systems, infrastructure, and practical AI will be published here.",
+  },
+  {
+    title: "Consulting notes and field insights",
+    text: "Our team will share selected observations, frameworks, and execution-oriented thinking.",
+  },
 ];
 
 export default function Page() {
+  const latestArticles = getLatestArticles(3);
   return (
     <main className="bg-white text-[#111111]">
       <div className="relative">
@@ -80,7 +89,9 @@ export default function Page() {
               <div
                 key={item.title}
                 className={`px-8 py-10 sm:px-12 lg:px-16 lg:py-12 ${
-                  index !== highlights.length - 1 ? "md:border-r md:border-black/10" : ""
+                  index !== highlights.length - 1
+                    ? "md:border-r md:border-black/10"
+                    : ""
                 }`}
               >
                 <p className="text-[11px] uppercase tracking-[0.24em] text-[#0a4ea3]">
@@ -142,7 +153,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-b border-black/10 bg-[#f5f5f2]">
+      <section className="border-b border-black/10 bg-[#ffffff]">
         <div className="mx-auto max-w-[1600px] px-8 py-16 sm:px-12 lg:px-20 lg:py-24">
           <div className="max-w-3xl">
             <p className="text-[16px] uppercase tracking-[0.24em] text-[#0a4ea3]">
@@ -198,23 +209,104 @@ export default function Page() {
         </div>
       </section>
 
-    <section className="border-t border-black/10 bg-[#f5f5f2]">
-      <div className="mx-auto max-w-[1600px] px-8 py-16 sm:px-12 lg:px-20 lg:py-20">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-[22px] uppercase tracking-[0.24em] text-[#0a4ea3]">
-            Clients
-          </p>
+      <section className="border-t border-black/10 bg-[#f5f5f2]">
+        <div className="mx-auto max-w-[1600px] px-8 py-16 sm:px-12 lg:px-20 lg:py-20">
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="text-[22px] uppercase tracking-[0.24em] text-[#0a4ea3]">
+              Clients
+            </p>
 
-          <div className="mt-14 flex flex-wrap items-center justify-center gap-14 sm:gap-20">
-            <img src="/logos/jsc.png" alt="Jakarta Smart City" className="h-24 w-auto object-contain transition duration-300 hover:scale-105" />
-            <img src="/logos/komdigi.png" alt="Komdigi" className="h-24 w-auto object-contain transition duration-300 hover:scale-105" />
-            <img src="/logos/pnj.png" alt="Politeknik Negeri Jakarta" className="h-28 w-auto object-contain transition duration-300 hover:scale-105" />
-            <img src="/logos/mulawarman.png" alt="Mulawarman University" className="h-28 w-auto object-contain transition duration-300 hover:scale-105" />
-            <img src="/logos/iain-kediri.png" alt="IAIN Kediri" className="h-24 w-auto object-contain transition duration-300 hover:scale-105" />
+            <div className="mt-14 flex flex-wrap items-center justify-center gap-14 sm:gap-20">
+              <img
+                src="/logos/jsc.png"
+                alt="Jakarta Smart City"
+                className="h-24 w-auto object-contain transition duration-300 hover:scale-105"
+              />
+              <img
+                src="/logos/komdigi.png"
+                alt="Komdigi"
+                className="h-24 w-auto object-contain transition duration-300 hover:scale-105"
+              />
+              <img
+                src="/logos/pnj.png"
+                alt="Politeknik Negeri Jakarta"
+                className="h-28 w-auto object-contain transition duration-300 hover:scale-105"
+              />
+              <img
+                src="/logos/mulawarman.png"
+                alt="Mulawarman University"
+                className="h-28 w-auto object-contain transition duration-300 hover:scale-105"
+              />
+              <img
+                src="/logos/iain-kediri.png"
+                alt="IAIN Kediri"
+                className="h-24 w-auto object-contain transition duration-300 hover:scale-105"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="border-t border-black/10 bg-[#ffffff]">
+        <div className="mx-auto max-w-[1600px] px-8 py-14 sm:px-12 lg:px-20 lg:py-16">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-[18px] uppercase tracking-[0.24em] text-[#0a4ea3]">
+                Insights
+              </p>
+              <h2 className="mt-3 text-3xl font-light leading-[1.05] tracking-[-0.03em] sm:text-4xl lg:text-[44px]">
+                Perspectives and notes from our work.
+              </h2>
+            </div>
+
+            <Link
+              href="/insights"
+              className="inline-flex items-center gap-3 self-start text-sm uppercase tracking-[0.22em] text-[#0a4ea3] transition-opacity hover:opacity-70 md:self-auto"
+            >
+              View all insights
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          {latestArticles.length === 0 ? (
+            <div className="mt-8 border border-black/10 bg-white px-8 py-10">
+              <p className="text-[14px] uppercase tracking-[0.24em] text-[#0a4ea3]">
+                No articles yet
+              </p>
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-black/65 sm:text-base">
+                Articles from our team will appear here once published.
+              </p>
+            </div>
+          ) : (
+            <div className="mt-8 grid gap-6 lg:grid-cols-3">
+              {latestArticles.map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/insights/${article.slug}`}
+                  className="group flex min-h-[220px] flex-col justify-between border border-black/10 bg-white px-7 py-7 transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(0,0,0,0.06)]"
+                >
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.24em] text-[#0a4ea3]">
+                      {article.date}
+                    </p>
+                    <h3 className="mt-3 text-[28px] font-light leading-[1.15] tracking-[-0.02em] text-black">
+                      {article.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 text-black/65 sm:text-base">
+                      {article.excerpt}
+                    </p>
+                  </div>
+
+                  <span className="mt-8 inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-[#0a4ea3] transition-transform duration-300 group-hover:translate-x-1">
+                    Read more
+                    <span aria-hidden="true">→</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
 
       <section className="border-t border-black/10 bg-[#f5f5f2]">
         <div className="mx-auto flex min-h-[340px] max-w-[1600px] flex-col justify-between gap-12 px-8 py-16 sm:px-12 md:min-h-[380px] md:flex-row md:items-end lg:px-20 lg:py-24">
@@ -240,43 +332,41 @@ export default function Page() {
   );
 }
 
-function BeliefIcon({ type }: { type: string }) {
-  if (type === "deployment") {
-    return <ShieldCheck className="h-12 w-12 stroke-[1.5]" />;
-  }
-
-  if (type === "structure") {
-    return <Network className="h-12 w-12 stroke-[1.5]" />;
-  }
-
-  return <Cpu className="h-12 w-12 stroke-[1.5]" />;
-}
-
-type FeatureLinkProps = {
+function FeatureLink({
+  title,
+  body,
+  href,
+}: {
   title: string;
   body: string;
   href: string;
-};
-
-function FeatureLink({ title, body, href }: FeatureLinkProps) {
+}) {
   return (
     <Link
       href={href}
-      className="group border-b border-black/10 pb-8 last:border-b-0 last:pb-0"
+      className="group flex items-start justify-between gap-6 py-6 transition-opacity hover:opacity-75"
     >
-      <div className="flex items-start justify-between gap-6">
-        <div>
-          <h3 className="text-2xl font-light tracking-[-0.02em] transition-colors group-hover:text-[#0a4ea3]">
-            {title}
-          </h3>
-          <p className="mt-3 max-w-md text-sm leading-7 text-black/65 sm:text-base">
-            {body}
-          </p>
-        </div>
-        <span className="mt-1 text-[#0a4ea3] transition-transform group-hover:translate-x-1">
-          →
-        </span>
+      <div>
+        <h3 className="text-xl font-light tracking-[-0.02em]">{title}</h3>
+        <p className="mt-3 max-w-md text-sm leading-7 text-black/65 sm:text-base">
+          {body}
+        </p>
       </div>
+      <span className="mt-1 text-[#0a4ea3] transition-transform duration-300 group-hover:translate-x-1">
+        →
+      </span>
     </Link>
   );
+}
+
+function BeliefIcon({ type }: { type: string }) {
+  if (type === "deployment") {
+    return <ShieldCheck className="h-7 w-7" strokeWidth={1.75} />;
+  }
+
+  if (type === "structure") {
+    return <Network className="h-7 w-7" strokeWidth={1.75} />;
+  }
+
+  return <Cpu className="h-7 w-7" strokeWidth={1.75} />;
 }

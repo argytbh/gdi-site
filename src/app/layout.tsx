@@ -6,13 +6,15 @@ import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: {
-    default: "IT Consulting & ERP Solutions Indonesia | PT Global Dataverse Indonesia",
+    default: "IT Consulting & AI Solutions Indonesia | PT Global Dataverse Indonesia",
     template: "%s | GDI",
   },
   description:
-    "PT Global Dataverse Indonesia provides ERP implementation, IT consulting, AI solutions, and system development services for businesses in Indonesia.",
+    "PT Global Dataverse Indonesia provides Digitalizations, IT consulting, AI solutions, and system development services for businesses in Indonesia.",
   keywords: [
     "ERP Indonesia",
+    "Digitalization Indonesia",
+    "Digital Transformation Indonesia",
     "IT Consulting Indonesia",
     "ERP Consultant Indonesia",
     "AI Solutions Indonesia",
