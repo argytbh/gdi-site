@@ -206,11 +206,11 @@ export default function Page() {
           </p>
 
           <div className="mt-14 flex flex-wrap items-center justify-center gap-14 sm:gap-20">
-            <img src="/logos/mulawarman.png" alt="Mulawarman University" className="h-28 w-auto object-contain transition duration-300 hover:scale-105" />
-            <img src="/logos/pnj.jpg" alt="Politeknik Negeri Jakarta" className="h-28 w-auto object-contain transition duration-300 hover:scale-105" />
+            <img src="/logos/jsc.png" alt="Jakarta Smart City" className="h-24 w-auto object-contain transition duration-300 hover:scale-105" />
             <img src="/logos/komdigi.png" alt="Komdigi" className="h-24 w-auto object-contain transition duration-300 hover:scale-105" />
-            <img src="/logos/jsc.jpg" alt="Jakarta Smart City" className="h-24 w-auto object-contain transition duration-300 hover:scale-105" />
-            <img src="/logos/iain-kediri.jpg" alt="IAIN Kediri" className="h-24 w-auto object-contain transition duration-300 hover:scale-105" />
+            <img src="/logos/pnj.png" alt="Politeknik Negeri Jakarta" className="h-28 w-auto object-contain transition duration-300 hover:scale-105" />
+            <img src="/logos/mulawarman.png" alt="Mulawarman University" className="h-28 w-auto object-contain transition duration-300 hover:scale-105" />
+            <img src="/logos/iain-kediri.png" alt="IAIN Kediri" className="h-24 w-auto object-contain transition duration-300 hover:scale-105" />
           </div>
         </div>
       </div>
