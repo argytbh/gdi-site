@@ -2,7 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/navbar";
 import SiteFooter from "@/components/layout/footer";
-import { Analytics } from "@vercel/analytics/next"
+import ChatbotWidget from "@/components/chatbot/chatbot-widget";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: {
@@ -34,11 +35,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id">
+    <html lang="id" data-scroll-behavior="smooth">
       <body className="bg-white text-[#111111]">
         <Navbar />
         {children}
         <SiteFooter />
+        <ChatbotWidget />
+        <Analytics />
       </body>
     </html>
   );
