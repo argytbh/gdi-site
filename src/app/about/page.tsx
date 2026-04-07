@@ -2,10 +2,50 @@
 
 import Image from "next/image";
 
+const partners = [
+  {
+    name: "Telkom University",
+    src: "/logos/telkom.webp",
+    className: "h-32 sm:h-36 w-auto object-contain",
+  },
+  {
+    name: "AILO",
+    src: "/logos/ailo.png",
+    className: "h-24 sm:h-28 w-auto object-contain",
+  },
+];
+
+const clients = [
+  {
+    name: "Jakarta Smart City",
+    src: "/logos/jsc.png",
+    className: "h-20 sm:h-24 w-auto object-contain",
+  },
+  {
+    name: "Komdigi",
+    src: "/logos/komdigi.png",
+    className: "h-20 sm:h-24 w-auto object-contain",
+  },
+  {
+    name: "PNJ",
+    src: "/logos/pnj.png",
+    className: "h-20 sm:h-24 w-auto object-contain",
+  },
+  {
+    name: "Mulawarman University",
+    src: "/logos/mulawarman.png",
+    className: "h-24 sm:h-28 w-auto object-contain",
+  },
+  {
+    name: "IAIN Kediri",
+    src: "/logos/iain-kediri.png",
+    className: "h-20 sm:h-24 w-auto object-contain",
+  },
+];
+
 export default function AboutPage() {
   return (
     <main className="bg-white text-[#111111]">
-      {/* HERO */}
       <section className="border-b border-black/10 bg-[#f6f6f3] pt-28 sm:pt-32">
         <div className="mx-auto max-w-[1600px] px-8 pb-12 sm:px-12 lg:px-20 lg:pb-16">
           <div className="relative overflow-hidden border border-black/10 bg-white">
@@ -28,18 +68,17 @@ export default function AboutPage() {
                 </p>
 
                 <h1 className="text-4xl font-light leading-[0.95] tracking-[-0.045em] text-white sm:text-5xl lg:text-[72px]">
-                  Built with clarity,
+                  Built to help ideas
                   <br />
-                  discipline, and
+                  become real and
                   <br />
-                  long-term intent.
+                  organizations move forward.
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-sm leading-7 text-white/82 sm:text-base sm:leading-8">
-                  PT Global Dataverse Indonesia is a technology-driven company
-                  committed to building meaningful digital value through
-                  thoughtful direction, strong foundations, and a long-term view
-                  of progress.
+                  GDI works in two connected ways. We help organizations build
+                  stronger digital foundations, and we work with founders to
+                  turn promising ideas into operational ventures.
                 </p>
               </div>
             </div>
@@ -47,91 +86,187 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ABOUT US */}
       <section className="border-b border-black/10 bg-white">
         <div className="mx-auto grid max-w-[1600px] gap-10 px-8 py-14 sm:px-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:px-20 lg:py-20">
           <div>
             <p className="text-[13px] uppercase tracking-[0.24em] text-[#0a4ea3]">
-              About Us
+              Who We Are
             </p>
             <h2 className="mt-4 text-4xl font-light leading-[1.03] tracking-[-0.04em] sm:text-5xl lg:text-[60px]">
-              A company shaped
+              A company built
               <br />
-              by purpose and
+              around execution
               <br />
-              continuity.
+              and long term work.
             </h2>
           </div>
 
           <div className="max-w-3xl">
             <p className="text-base leading-8 text-black/72 sm:text-lg">
-              PT Global Dataverse Indonesia was established with the belief that
-              technology should be approached with seriousness, structure, and
-              responsibility. We see digital development not as a short-term
-              trend, but as part of a broader long-term process of building
-              institutions, strengthening capabilities, and creating practical
-              value.
+              GDI is built around two kinds of work. One is helping
+              organizations build and improve the systems behind their
+              operations in a serious business to business setting. The other is
+              working with founders through a venture building approach when
+              there is strong conviction in both the idea and the people behind
+              it.
             </p>
 
             <p className="mt-6 text-base leading-8 text-black/72 sm:text-lg">
-              Our identity is grounded in careful thinking and disciplined
-              execution. We believe meaningful progress comes from combining
-              strong technical foundations with a clear understanding of context,
-              people, and the environments in which technology is meant to live.
+              We are not interested in being only a conventional vendor. We want
+              to build things that are used, relied on, and able to grow over
+              time. That applies both to the work we do with organizations and
+              to the ventures we choose to build.
             </p>
           </div>
         </div>
       </section>
 
-      {/* DEDICATION */}
       <section className="border-b border-black/10 bg-[#f6f6f3]">
         <div className="mx-auto grid max-w-[1600px] gap-10 px-8 py-14 sm:px-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20 lg:px-20 lg:py-20">
           <div>
             <p className="text-[13px] uppercase tracking-[0.24em] text-[#0a4ea3]">
-              Dedication
+              How We Operate
             </p>
             <h2 className="mt-4 text-4xl font-light leading-[1.03] tracking-[-0.04em] sm:text-5xl lg:text-[60px]">
-              Dedicated to the
+              Two engines.
               <br />
-              growth of the
-              <br />
-              ecosystem.
+              One direction.
             </h2>
           </div>
 
           <div className="max-w-3xl">
             <p className="text-base leading-8 text-black/72 sm:text-lg">
-              GDI is dedicated to contributing to a healthier technology
-              ecosystem by supporting the circulation of knowledge, capability,
-              and opportunity. We believe that meaningful digital progress does
-              not emerge in isolation. It grows through collaboration,
-              consistency, and a shared commitment to building environments where
-              innovation can mature responsibly.
+              One part of GDI works with organizations that need strong digital
+              systems and structured execution. This is the part of our work
+              that keeps us close to real operational challenges, real decision
+              making, and the practical conditions in which technology is meant
+              to function.
             </p>
 
             <p className="mt-6 text-base leading-8 text-black/72 sm:text-lg">
-              This dedication also extends to communities. We value the role of
-              technology in expanding access, strengthening learning, and
-              encouraging the development of people and institutions over time.
-              For us, contribution is not only measured by what is built, but
-              also by how it supports a wider culture of growth, participation,
-              and long-term impact.
+              The other part works with founders who have promising ideas but do
+              not yet have the technical capability to build them. In those
+              cases, we may step in as a technical partner and help turn the
+              idea into something real. Together, these two modes allow us to
+              stay grounded in reality while also building new ventures from the
+              ground up.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ADDRESS */}
+      <section className="border-b border-black/10 bg-white">
+        <div className="mx-auto grid max-w-[1600px] gap-12 px-8 py-16 sm:px-12 lg:grid-cols-[1fr_1fr] lg:gap-20 lg:px-20 lg:py-24">
+          <div className="max-w-2xl">
+            <p className="text-[13px] uppercase tracking-[0.24em] text-[#0a4ea3]">
+              What We Believe
+            </p>
+            <h2 className="mt-4 text-4xl font-light leading-[1.03] tracking-[-0.04em] sm:text-5xl lg:text-[60px]">
+              Built around
+              <br />
+              human potential.
+            </h2>
+          </div>
+
+          <div className="max-w-3xl">
+            <p className="text-base leading-8 text-black/72 sm:text-lg">
+              We believe technology should strengthen people, not reduce their
+              role. Better systems can help individuals think more clearly, work
+              more effectively, and grow over time.
+            </p>
+
+            <p className="mt-6 text-base leading-8 text-black/72 sm:text-lg">
+              For us, digital development is not only about efficiency. It is
+              also about building stronger organizations through stronger human
+              capability. The point is not to remove people from the process,
+              but to raise the level at which they operate.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-black/10 bg-[#f5f5f2]">
+        <div className="mx-auto grid max-w-[1600px] gap-12 px-8 py-16 sm:px-12 lg:grid-cols-[1fr_1fr] lg:gap-20 lg:px-20 lg:py-20">
+          
+          {/* LEFT — TEXT */}
+          <div className="max-w-xl">
+            <p className="text-[13px] uppercase tracking-[0.24em] text-[#0a4ea3]">
+              Strategic Partners
+            </p>
+
+            <h2 className="mt-4 text-4xl font-light leading-[1.03] tracking-[-0.04em] sm:text-5xl lg:text-[60px]">
+              Collaborations that
+              <br />
+              strengthen the work.
+            </h2>
+
+            <p className="mt-6 text-base leading-8 text-black/72 sm:text-lg">
+              We value collaborations that expand capability, deepen perspective, and support long term execution.
+            </p>
+          </div>
+
+          {/* RIGHT — LOGOS */}
+          <div className="flex flex-wrap items-center justify-start gap-x-16 gap-y-12">
+            {partners.map((partner) => (
+              <div key={partner.name} className="flex items-center justify-center">
+                <img
+                  src={partner.src}
+                  alt={partner.name}
+                  className={`${partner.className} transition duration-300 hover:scale-105`}
+                />
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <section className="border-b border-black/10 bg-white">
+        <div className="mx-auto grid max-w-[1600px] gap-12 px-8 py-16 sm:px-12 lg:grid-cols-[1fr_1fr] lg:gap-20 lg:px-20 lg:py-20">
+          
+          {/* LEFT — TEXT */}
+          <div className="max-w-xl">
+            <p className="text-[13px] uppercase tracking-[0.24em] text-[#0a4ea3]">
+              Collaborations
+            </p>
+
+            <h2 className="mt-4 text-4xl font-light leading-[1.03] tracking-[-0.04em] sm:text-5xl lg:text-[60px]">
+              Organizations we
+              <br />
+              have worked with.
+            </h2>
+
+            <p className="mt-6 text-base leading-8 text-black/72 sm:text-lg">
+              Our work has involved organizations across education and broader institutional environments.
+            </p>
+          </div>
+
+          {/* RIGHT — LOGOS */}
+          <div className="flex flex-wrap items-center justify-start gap-x-16 gap-y-12">
+            {clients.map((client) => (
+              <div key={client.name} className="flex items-center justify-center">
+                <img
+                  src={client.src}
+                  alt={client.name}
+                  className={`${client.className} transition duration-300 hover:scale-105`}
+                />
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
       <section className="border-b border-black/10 bg-white">
         <div className="mx-auto grid max-w-[1600px] gap-10 px-8 py-14 sm:px-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:px-20 lg:py-20">
           <div>
             <p className="text-[13px] uppercase tracking-[0.24em] text-[#0a4ea3]">
-              Address
+              Company Information
             </p>
             <h2 className="mt-4 text-4xl font-light leading-[1.03] tracking-[-0.04em] sm:text-5xl lg:text-[60px]">
-              Company
+              Official
               <br />
-              information.
+              details.
             </h2>
           </div>
 
