@@ -45,6 +45,26 @@ function getErrorMessage(payload: unknown, fallback: string) {
   return fallback;
 }
 
+async function parseApiPayload(response: Response) {
+  const contentType = response.headers.get("content-type") ?? "";
+
+  if (contentType.includes("application/json")) {
+    return response.json();
+  }
+
+  const text = await response.text();
+
+  if (!text.trim()) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(text) as unknown;
+  } catch {
+    return { error: text };
+  }
+}
+
 function isChatReply(payload: unknown): payload is ChatReply {
   return (
     !!payload &&
@@ -143,7 +163,9 @@ export default function ChatbotWidget() {
         }),
       });
 
-      const payload = (await response.json()) as ChatReply | { error?: string };
+      const payload = (await parseApiPayload(response)) as
+        | ChatReply
+        | { error?: string };
 
       if (!response.ok || ("error" in payload && payload.error)) {
         throw new Error(getErrorMessage(payload, "The chatbot request failed."));
@@ -193,7 +215,7 @@ export default function ChatbotWidget() {
         }),
       });
 
-      const payload = (await response.json()) as
+      const payload = (await parseApiPayload(response)) as
         | { reply: string }
         | { error?: string };
 
@@ -339,6 +361,7 @@ export default function ChatbotWidget() {
                   key={prompt}
                   type="button"
                   onClick={() => void sendChatMessage(prompt)}
+                  disabled={isPending}
                   className="border border-black/10 px-3 py-2 text-xs uppercase tracking-[0.16em] text-black/65 transition hover:border-[#0a4ea3] hover:text-[#0a4ea3]"
                 >
                   {prompt}
@@ -347,6 +370,7 @@ export default function ChatbotWidget() {
               <button
                 type="button"
                 onClick={() => setShowLeadForm((current) => !current)}
+                disabled={isPending}
                 className="border border-black/10 px-3 py-2 text-xs uppercase tracking-[0.16em] text-black/65 transition hover:border-[#0a4ea3] hover:text-[#0a4ea3]"
               >
                 Share brief
@@ -379,8 +403,8 @@ export default function ChatbotWidget() {
             </form>
 
             <p className="mt-3 text-xs leading-6 text-black/55">
-              The assistant only uses public site knowledge and routes uncertain
-              questions to human follow-up.
+              The assistant only uses public site knowledge and falls back to
+              the local site responder when an OpenAI reply is unavailable.
             </p>
 
             {error ? <p className="mt-2 text-sm text-[#9f1239]">{error}</p> : null}

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { contactEmail } from "@/lib/chatbot/knowledge";
 import { storeLeadSubmission } from "@/lib/chatbot/lead-store";
 import { generateOpenAIReply } from "@/lib/chatbot/openai";
 import {
@@ -7,7 +8,7 @@ import {
   detectLanguage,
   getMissingLeadFields,
 } from "@/lib/chatbot/reply";
-import type { ChatMessage, LeadDraft } from "@/lib/chatbot/types";
+import type { ChatMessage, LeadDraft, StoredLead } from "@/lib/chatbot/types";
 
 export const runtime = "nodejs";
 
@@ -96,17 +97,33 @@ export async function POST(request: Request) {
       );
     }
 
-    const storedLead = await storeLeadSubmission({
-      draft: lead,
-      language,
-      summary: buildLeadSummary(messages, lead),
-    });
+    let storedLead: StoredLead;
+
+    try {
+      storedLead = await storeLeadSubmission({
+        draft: lead,
+        language,
+        summary: buildLeadSummary(messages, lead),
+      });
+    } catch (error) {
+      console.error("Chatbot lead submission failed", error);
+
+      return NextResponse.json(
+        {
+          error:
+            language === "id"
+              ? "Brief proyek belum bisa dikirim sekarang. Silakan coba lagi sebentar lagi atau email langsung ke tim GDI."
+              : "The project brief could not be delivered right now. Please try again shortly or email the GDI team directly.",
+        },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       reply:
         language === "id"
-          ? `Terima kasih. Brief Anda sudah disimpan dengan ID ${storedLead.id.slice(0, 8)} dan tim GDI bisa menindaklanjuti lewat ${storedLead.email}.`
-          : `Thanks. Your brief has been stored with ID ${storedLead.id.slice(0, 8)} and the GDI team can follow up at ${storedLead.email}.`,
+          ? `Terima kasih. Brief Anda sudah diteruskan ke tim GDI dengan ID ${storedLead.id.slice(0, 8)}. Tim akan meninjau dan menindaklanjuti lewat ${storedLead.email}. Jika ada hal yang perlu ditambahkan, Anda juga bisa email ${contactEmail} sambil menyebutkan ID tersebut.`
+          : `Thanks. Your brief has been sent to the GDI team with ID ${storedLead.id.slice(0, 8)}. The team will review it and follow up at ${storedLead.email}. If you need to add context, you can also email ${contactEmail} and mention that ID.`,
       stored: true,
       leadId: storedLead.id,
     });

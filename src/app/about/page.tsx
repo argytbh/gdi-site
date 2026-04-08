@@ -209,9 +209,11 @@ export default function AboutPage() {
           <div className="flex flex-wrap items-center justify-start gap-x-16 gap-y-12">
             {partners.map((partner) => (
               <div key={partner.name} className="flex items-center justify-center">
-                <img
+                <Image
                   src={partner.src}
                   alt={partner.name}
+                  width={240}
+                  height={144}
                   className={`${partner.className} transition duration-300 hover:scale-105`}
                 />
               </div>
@@ -245,9 +247,11 @@ export default function AboutPage() {
           <div className="flex flex-wrap items-center justify-start gap-x-16 gap-y-12">
             {clients.map((client) => (
               <div key={client.name} className="flex items-center justify-center">
-                <img
+                <Image
                   src={client.src}
                   alt={client.name}
+                  width={240}
+                  height={144}
                   className={`${client.className} transition duration-300 hover:scale-105`}
                 />
               </div>

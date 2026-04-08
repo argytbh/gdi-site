@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Cpu, Network, ShieldCheck } from "lucide-react";
 import { getLatestArticles } from "@/lib/articles";
 
 const highlights = [
@@ -15,24 +14,6 @@ const highlights = [
   {
     title: "Selective Partnership",
     text: "We choose carefully and commit where we believe the work is worth building.",
-  },
-];
-
-const beliefs = [
-  {
-    title: "Built for real use",
-    text: "We care about systems and products that people can actually use, rely on, and grow with over time.",
-    icon: "deployment",
-  },
-  {
-    title: "Clear structure",
-    text: "Good technology should make operations feel more coherent, not more complicated.",
-    icon: "structure",
-  },
-  {
-    title: "Thoughtful execution",
-    text: "We prefer substance over noise and long term value over rushed delivery.",
-    icon: "intelligence",
   },
 ];
 
@@ -384,16 +365,4 @@ function FeatureLink({
       </span>
     </Link>
   );
-}
-
-function BeliefIcon({ type }: { type: string }) {
-  if (type === "deployment") {
-    return <ShieldCheck className="h-7 w-7" strokeWidth={1.75} />;
-  }
-
-  if (type === "structure") {
-    return <Network className="h-7 w-7" strokeWidth={1.75} />;
-  }
-
-  return <Cpu className="h-7 w-7" strokeWidth={1.75} />;
 }

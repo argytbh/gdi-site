@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 export default function ContactPage() {
   return (
     <main className="bg-white text-[#111111]">
