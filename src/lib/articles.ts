@@ -9,6 +9,7 @@ export type Article = {
   title: string;
   excerpt: string;
   date: string;
+  author: string;
   content: string;
 };
 
@@ -32,6 +33,7 @@ export function getAllArticles(): Article[] {
       title: data.title ?? "Untitled article",
       excerpt: data.excerpt ?? "",
       date: data.date ?? "",
+      author: data.author ?? "Research Team",
       content,
     };
   });

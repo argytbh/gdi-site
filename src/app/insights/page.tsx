@@ -36,9 +36,11 @@ export default function InsightsPage() {
                   href={`/insights/${article.slug}`}
                   className="group border border-black/10 bg-white px-8 py-8 transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(0,0,0,0.06)]"
                 >
-                  <p className="text-[11px] uppercase tracking-[0.24em] text-[#0a4ea3]">
-                    {article.date}
-                  </p>
+                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-[#0a4ea3]">
+                    <span>{article.date}</span>
+                    <span className="text-black/30">•</span>
+                    <span>{article.author}</span>
+                  </div>
                   <h2 className="mt-3 text-2xl font-light tracking-[-0.02em]">
                     {article.title}
                   </h2>
